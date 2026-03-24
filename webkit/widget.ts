@@ -1,4 +1,4 @@
-import { callable, Millennium } from "@steambrew/webkit";
+import { callable } from "@steambrew/webkit";
 
 const getStats = callable<[{ playerName: string }], any>("get_stats");
 const writeCache = callable<[{ data: string }], any>("write_cache");
