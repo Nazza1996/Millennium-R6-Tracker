@@ -8,6 +8,7 @@
 - Quick Stats - Display quick stats such as KD and Win%
 - Link to Tracker.GG page
 - Caches results to disk, clear via the plugins settings page
+- Works in Steam overlay
 
 ## Installation
 
