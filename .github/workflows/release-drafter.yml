@@ -32,12 +32,12 @@ jobs:
 
       - name: Package Build Output
         run: |
-          zip -r Release-v${{ github.event.inputs.version }}.zip .millennium backend LICENSE plugin.json README.md
+          zip -r r6-stats-tracker-v${{ github.event.inputs.version }}.zip .millennium backend LICENSE plugin.json README.md
 
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ github.event.inputs.version }}
-          files: Release-v${{ github.event.inputs.version }}.zip
+          files: r6-stats-tracker-v${{ github.event.inputs.version }}.zip
           overwrite_files: true
           draft: true
