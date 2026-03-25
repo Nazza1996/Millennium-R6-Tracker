@@ -1,0 +1,39 @@
+name: Release Drafter
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version for this release (e.g. v1.0.0)
+        required: true
+        default: 'v0.0.1'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm i
+
+      - name: Build
+        run: npm run dev
+
+      - name: Package Build Output
+        run: |
+          zip -r Release.zip .millennium backend LICENSE plugin.json README.md
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.event.inputs.version }}
+          files: Release-${{ github.event.inputs.version }}.zip
+          overwrite_files: true
+          draft: true
