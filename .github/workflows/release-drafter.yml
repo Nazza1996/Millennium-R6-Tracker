@@ -6,7 +6,11 @@ on:
       version:
         description: 'Version for this release (e.g. v1.0.0)'
         required: true
-        default: 'v0.0.1'
+        default: 'v0.0.0'
+
+permissions:
+  contents: write
+  packages: write
 
 jobs:
   build:
@@ -28,7 +32,7 @@ jobs:
 
       - name: Package Build Output
         run: |
-          zip -r Release.zip .millennium backend LICENSE plugin.json README.md
+          zip -r Release-${{ github.event.inputs.version }}.zip .millennium backend LICENSE plugin.json README.md
 
       - name: Release
         uses: softprops/action-gh-release@v2
