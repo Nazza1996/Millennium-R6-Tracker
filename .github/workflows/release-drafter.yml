@@ -28,7 +28,7 @@ jobs:
         run: npm i
 
       - name: Build
-        run: npm run dev
+        run: npm run build
 
       - name: Package Build Output
         run: |
