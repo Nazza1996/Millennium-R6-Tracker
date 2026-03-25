@@ -1,7 +1,7 @@
 import { Millennium, IconsModule, definePlugin, Field, DialogButton, callable } from '@steambrew/client';
 import { useEffect, useState } from 'react';
 
-function windowCreated(context: any) {
+function windowCreated(_context: any) {
 	// window create event.
 	// you can interact directly with the document and monitor it with dom observers
 	// you can then render components in specific pages.
