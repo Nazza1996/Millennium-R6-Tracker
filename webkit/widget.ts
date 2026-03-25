@@ -98,8 +98,6 @@ export default class Widget {
         if (!userName) {
             this.setState({
                 error: "Player name cannot be empty",
-                rank: null,
-                rankImage: null
             });
             this.hideLoader();
 			this.showSearch();
@@ -149,14 +147,6 @@ export default class Widget {
         } catch (e: any) {
             this.setState({
                 error: e.message || "Failed to fetch stats",
-                rank: null,
-                rankImage: null,
-                rankPoints: null,
-                ubiName: userName,
-                rankedKd: null,
-                rankedWinPercentage: null,
-                unrankedKd: null,
-                unrankedWinPercentage: null
             });
 
 			this.showSearch();
