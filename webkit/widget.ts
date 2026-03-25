@@ -6,6 +6,7 @@ const writeCache = callable<[{ data: string }], any>("write_cache");
 interface WidgetState {
     rank: string | null;
     rankImage: string | null;
+    rankPoints: string | null;
     ubiName: string | null;
     error: string | null;
     rankedKd: string | null;
@@ -30,11 +31,13 @@ export default class Widget {
     private statsContainer!: HTMLDivElement;
     private rankImg!: HTMLImageElement;
     private rankText!: HTMLSpanElement;
+    private rankPoints!: HTMLSpanElement;
 
     constructor(cache: Record<string, CacheEntry> = {}) {
         this.state = {
             rank: null,
             rankImage: null,
+            rankPoints: null,
             ubiName: null,
             error: null,
             rankedKd: null,
@@ -148,6 +151,7 @@ export default class Widget {
                 error: e.message || "Failed to fetch stats",
                 rank: null,
                 rankImage: null,
+                rankPoints: null,
                 ubiName: userName,
                 rankedKd: null,
                 rankedWinPercentage: null,
@@ -175,6 +179,7 @@ export default class Widget {
         return {
             rank: ranked?.stats?.rankPoints?.metadata?.name ?? null,
             rankImage: ranked?.stats?.rankPoints?.metadata?.imageUrl ?? null,
+            rankPoints: ranked?.stats?.rankPoints?.displayValue ?? null,
             rankedKd: ranked?.stats?.kdRatio?.displayValue ?? null,
             rankedWinPercentage: ranked?.stats?.winPercentage?.displayValue ?? null,
             unrankedKd: casual?.stats?.kdRatio?.displayValue ?? null,
@@ -306,10 +311,17 @@ export default class Widget {
             font-size: 16px;
             font-weight: bold;
             color: white;
-            margin: 10px 0;
+            margin-top: 10px;
         `;
 
-		rankContainer.append(this.rankImg, this.rankText);
+        this.rankPoints = document.createElement("span");
+        this.rankPoints.style.cssText = `
+            font-size: 12px;
+            color: white;
+            margin-bottom: 10px;
+        `;
+
+		rankContainer.append(this.rankImg, this.rankText, this.rankPoints);
 
         this.statsContainer = document.createElement("div");
         this.statsContainer.style.cssText = `
@@ -369,6 +381,7 @@ export default class Widget {
                 window.open(url, "_self");
             }
         }
+        this.rankPoints.textContent = this.state.rankPoints != null ? `${this.state.rankPoints} RP` : "";
 
         this.statsContainer.replaceChildren(
             this.createStatElement("Ranked K/D", this.state.rankedKd),
