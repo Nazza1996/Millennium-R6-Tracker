@@ -1,6 +1,6 @@
 # Rainbow Six Siege Stats for [Millennium](https://steambrew.app/)
 
-<img width="1273" height="702" alt="image" src="https://github.com/user-attachments/assets/7b53ce3c-a192-4abb-b55a-b544e19f5b90" />
+<img width="965" height="527" alt="image" src="https://github.com/user-attachments/assets/58057159-883d-41cb-b865-ee0fa1f6d89b" />
 
 ## Features
 - Seamless Integration - Displays seamlessly on user profiles with the native Steam styling
