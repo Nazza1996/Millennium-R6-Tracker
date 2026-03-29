@@ -20,9 +20,8 @@ export default async function WebkitMain() {
 		col.insertBefore(title, countLinkArea);
 
 		let cache = await getCache();
-		cache = JSON.parse(cache);
 
-		const widget = new Widget(cache ? cache : {});
+		const widget = new Widget(cache ? JSON.parse(cache) : {});
 		col.insertBefore(widget.getElement(), countLinkArea);
 	}
 }
