@@ -4,6 +4,6 @@
 	"name": "r6-stats-tracker",
 	"common_name": "R6 Stats Tracker",
 	"description": "Display Rainbow Six Siege stats on user profiles.",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"backendType": "lua"
 }
